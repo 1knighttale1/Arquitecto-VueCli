@@ -1,85 +1,106 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView} from 'vue-router'
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+
+const name = "Poiesis"
+const menuHeader = ref(false)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <header id="HEADER" class="primary-header flex">
+    
+    <!-- start::title -->
+    <div>
+        <img alt="Vue logo" class="logo" src="@/assets/logo_POIESIS_white.svg" width="200" height="100" />
+        <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="100" /> -->
     </div>
+    <!-- end::title -->
+
+    <!-- start::menu -->
+    <button @click="menuHeader=!menuHeader" class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="menuHeader">
+      <!-- <span class="sr-only">{{ menuHeader }}</span> -->
+    </button>
+    <!-- end::menu -->
+
+    <!-- start::nav -->
+    <nav>
+      <ul id="primary-navigation" :data-visible="menuHeader" class="primary-navigation flex">
+        <li class="active">
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li class="active">
+          <RouterLink to="/qwerty">qwerty</RouterLink>
+        </li>
+        <li class="active">
+          <RouterLink to="/about">About</RouterLink>
+        </li>
+      </ul>
+    </nav>
+    <!-- end::nav -->
+
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+.primary-header {
+    align-items: center;
+    justify-content: space-between;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.mobile-nav-toggle {
+    display: none;
 }
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    background: hsla(0 0% 0% / 0.5);
+    backdrop-filter: blur(1rem);
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+@supports (backdrop-filter: blur(1rem)) {
+    .primary-navigation {
+        background: hsla(0 0% 100% / 0.1);
+        backdrop-filter: blur(1rem);
+    }
 }
+@media (max-width: 35em){
+    .primary-navigation {
+        --gap: 3em;
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 45%;
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+        flex-direction: column;
+        padding: min(30vh, 10rem) min(20vw, 7rem);
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0%);        
+    }
+    .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        z-index: 9999;
+        background-color: transparent;
+        background-image: url("@/assets/logo.svg");
+        /* background-image: url("assets/logo.svg"); */
+        /* background-color: red; */
+        background-repeat: no-repeat;
+        width: 2rem;
+        border: 0;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 0rem;
+    }
+    .mobile-nav-toggle[aria-expanded="true"]{
+      /* cuando se despliega el menu */
+        background-image: url("@/assets/logo.svg");
+    }
 }
 </style>
