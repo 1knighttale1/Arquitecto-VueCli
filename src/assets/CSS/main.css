@@ -1,8 +1,8 @@
 @import './base.css';
 #app {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2em;
   
   font-weight: normal;
 }
@@ -17,5 +17,6 @@ a,
   gap: var(--gap, 5rem);
 }
 .logo {
-  margin: 1rem;
+  margin-block: 1rem;
+  margin-inline: 0rem;
 }
