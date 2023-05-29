@@ -4,6 +4,14 @@ import { ref } from 'vue'
 
 const name = "Poiesis"
 const menuHeader = ref(false)
+
+let id = 0
+const menus = ref([
+  { id: id++, text: 'PROYECTOS', url: '/proyectos' },
+  { id: id++, text: 'OBRAS', url:'/obras' },
+  { id: id++, text: 'NOSOTROS', url:'/nosotros' },
+  { id: id++, text: 'CONTACTOS', url:'/contactos' },
+])
 </script>
 
 <template>
@@ -24,17 +32,8 @@ const menuHeader = ref(false)
         <!-- start::nav -->
         <nav>
         <ul id="primary-navigation" :data-visible="menuHeader" class="primary-navigation flex">
-            <li class="active">
-                <RouterLink to="/proyectos">Proyectos</RouterLink>
-            </li>
-            <li class="active">
-                <RouterLink to="/obras">Obras</RouterLink>
-            </li>
-            <li class="active">
-                <RouterLink to="/nosotros">Nosotros</RouterLink>
-            </li>
-            <li class="active">
-                <RouterLink to="/contactos">Contactos</RouterLink>
+            <li v-for="menu in menus" :key="menu.id">
+                <RouterLink :to="menu.url">{{ menu.text }}</RouterLink>
             </li>
         </ul>
         </nav>
@@ -66,14 +65,14 @@ const menuHeader = ref(false)
 }
 @media (min-width: 35em){
     .primary-navigation{
-        padding-block: 2rem;
-        padding-inline: 2rem;
-        /* padding-inline: clamp(1rem, 5vw, 3rem); */
+        padding-block: 1rem;
+        padding-inline: 3rem;
+        /* padding-inline: clamp(1rem, 5vw, 5em); */
     }
 }
-@media (max-width: 53em){
+@media (max-width: 65em){
     .primary-navigation {
-        --gap: 3em;
+        --gap: 4em;
 
         position: fixed;
         z-index: 1000;
