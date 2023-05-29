@@ -17,5 +17,5 @@ a,
   gap: var(--gap, 5rem);
 }
 .logo {
-  margin: 0rem;
+  margin: 1rem;
 }
