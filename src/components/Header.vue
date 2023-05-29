@@ -8,10 +8,9 @@ const menuHeader = ref(false)
 
 <template>
     <header id="HEADER" class="primary-header flex">
-    
         <!-- start::title -->
         <div>
-            <img alt="Vue logo" class="logo" src="@/assets/logo_POIESIS_white.svg" width="200" height="100" />
+            <img alt="Vue logo" class="logo" src="@/assets/SVG/logo_POIESIS_white.svg" width="250" height="100" />
             <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="100" /> -->
         </div>
         <!-- end::title -->
@@ -40,14 +39,10 @@ const menuHeader = ref(false)
         </ul>
         </nav>
         <!-- end::nav -->
-
     </header>
-    <h2>
-        <slot name="title"></slot>
-    </h2>
 </template>
 
-<style>
+<style scoped>
 .primary-header {
     align-items: center;
     justify-content: space-between;
@@ -69,7 +64,14 @@ const menuHeader = ref(false)
         backdrop-filter: blur(1rem);
     }
 }
-@media (max-width: 50em){
+@media (min-width: 35em){
+    .primary-navigation{
+        padding-block: 2rem;
+        padding-inline: 2rem;
+        /* padding-inline: clamp(1rem, 5vw, 3rem); */
+    }
+}
+@media (max-width: 53em){
     .primary-navigation {
         --gap: 3em;
 
@@ -78,7 +80,7 @@ const menuHeader = ref(false)
         inset: 0 0 0 45%;
 
         flex-direction: column;
-        padding: min(30vh, 10rem) min(20vw, 7rem);
+        padding: min(30vh, 10rem) min(20vw, 25rem);
 
         transform: translateX(100%);
         transition: transform 350ms ease-out;
@@ -91,19 +93,17 @@ const menuHeader = ref(false)
         position: absolute;
         z-index: 9999;
         background-color: transparent;
-        background-image: url("@/assets/logo.svg");
-        /* background-image: url("assets/logo.svg"); */
-        /* background-color: red; */
+        background-image: url("@/assets/SVG/menu_white.svg");
         background-repeat: no-repeat;
         width: 2rem;
         border: 0;
         aspect-ratio: 1;
-        top: 2rem;
+        top: 3rem;
         right: 0rem;
     }
     .mobile-nav-toggle[aria-expanded="true"]{
       /* cuando se despliega el menu */
-        background-image: url("@/assets/logo.svg");
+        background-image: url("@/assets/SVG/menu.svg");
     }
 }
 </style>
