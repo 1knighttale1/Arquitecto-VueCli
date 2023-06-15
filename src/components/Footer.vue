@@ -19,7 +19,8 @@ import { RouterLink } from 'vue-router'
 footer{
     width: 100%;
     position: absolute;
-    bottom: -42vh;
+    /* bottom: -42vh; */
+    bottom: 0;
     left: 0;
     padding: 2rem 5%;
     background-color: #0e0e0e;

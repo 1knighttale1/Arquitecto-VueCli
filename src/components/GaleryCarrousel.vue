@@ -1,18 +1,45 @@
 <template>
     <div class="carrousel">
-        <div class="grande">
+        <div :class="['grande']" 
+        :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
+            <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
+            <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
             <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
         </div>
 
         <ul class="puntos">
-            <li class="punto"></li>
-            <li class="punto"></li>
-            <li class="punto"></li>
+            <li v-for="item in items" 
+            :key="item" 
+            @click="transformCarrousel(item)"
+            :style="{ transform: `translateX(${positionCarrousel}+1%)` }"
+            :class="['punto', { activo: item === buttonActive }]"></li>
         </ul>
     </div>
 </template>
+<script setup>
+import { ref } from 'vue'
+
+const items = ref(5)
+
+// const botones = Array.from({ length: items }, (_, index) => index);
+const buttonActive = ref(1)
+const positionCarrousel = ref(0)  //  posision actual del carrusel
+const sizeItems = ref(100/items.value)
+const sizeCarrousel = ref(100 * items.value)
+
+function transformCarrousel(item) {
+  buttonActive.value = item
+  console.log(positionCarrousel.value)
+  positionCarrousel.value = -sizeItems.value * (item - 1)
+  
+  // ajuste de carrusel
+  if(item==items.value){positionCarrousel.value++}
+  if(item==1){positionCarrousel.value--}
+}
+</script>
+
 <style scope>
 .img-carrousel {
   max-width: 100%;
@@ -36,6 +63,7 @@
 }
 
 .carrousel .grande {
+  /* el width se modificara en el template-script */
   width: 200%;
   display: flex;
   flex-flow: row nowrap;
