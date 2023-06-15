@@ -12,6 +12,8 @@ const menus = ref([
   { id: id++, text: 'NOSOTROS', url:'/nosotros' },
   { id: id++, text: 'CONTACTOS', url:'/contactos' },
 ])
+
+function showMenu(){ menuHeader.value = !menuHeader.value }
 </script>
 
 <template>
@@ -24,7 +26,7 @@ const menus = ref([
         <!-- end::title -->
 
         <!-- start::menu -->
-        <button @click="menuHeader=!menuHeader" class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="menuHeader">
+        <button @click="showMenu" class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="menuHeader">
         <!-- <span class="sr-only">{{ menuHeader }}</span> -->
         </button>
         <!-- end::menu -->
@@ -76,7 +78,8 @@ const menus = ref([
 
         position: fixed;
         z-index: 1000;
-        inset: 0 0 0 45%;
+        /* inset: 0 0 0 45%; */
+        inset: 0 0 0 0%;
 
         flex-direction: column;
         padding: min(30vh, 10rem) min(20vw, 25rem);
