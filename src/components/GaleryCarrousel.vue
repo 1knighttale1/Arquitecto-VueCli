@@ -4,6 +4,7 @@
         :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
             <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
+
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
             <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
@@ -39,7 +40,6 @@ function transformCarrousel(item) {
   if(item==1){positionCarrousel.value--}
 }
 </script>
-
 <style scope>
 .img-carrousel {
   max-width: 100%;
@@ -59,6 +59,7 @@ function transformCarrousel(item) {
   border-radius: 1em;
   /* background-color: var(--blanco); */
   /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
+
   overflow: hidden;
 }
 
