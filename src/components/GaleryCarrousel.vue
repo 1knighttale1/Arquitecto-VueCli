@@ -12,8 +12,8 @@
         <ul class="puntos">
             <li v-for="item in items" 
             :key="item" 
-            @click="transformCarrousel(item)"
-            :style="{ transform: `translateX(${positionCarrousel}+1%)` }"
+            @click="transformCarrousel(item)" 
+            :style="{ transform: `translateX(${positionCarrousel}%)`}"
             :class="['punto', { activo: item === buttonActive }]"></li>
         </ul>
     </div>
@@ -54,11 +54,11 @@ function transformCarrousel(item) {
   width: 100%;
   max-width: 120em;
   padding: 1em;
-  color: var(--negro);
+  /* color: var(--negro); */
   transition: all 0.4s ease;
   border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  /* background-color: var(--blanco); */
+  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
   overflow: hidden;
 }
 
@@ -69,11 +69,11 @@ function transformCarrousel(item) {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  color: var(--negro);
+  /* color: var(--negro); */
   transition: all 0.4s ease;
   border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  /* background-color: var(--blanco); */
+  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
   padding: 1em;
   transition: all 0.5s ease;
   transform: translateX(-25%);
@@ -83,11 +83,11 @@ function transformCarrousel(item) {
 /* .carrousel { */
   width: calc( 100% / 2 - 2em);
   min-height: 10vh;
-  color: var(--negro);
+  /* color: var(--negro); */
   transition: all 0.4s ease;
   border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  /* background-color: var(--blanco); */
+  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
 
 .carrousel .puntos {
@@ -104,11 +104,12 @@ function transformCarrousel(item) {
   width: 2em;
   height: 2em;
   margin: 1em 1em 0;
+  list-style: none;
   color: var(--negro);
   transition: all 0.4s ease;
   border-radius: 1em;
   background-color: var(--blanco);
-  box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  /* box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
 
 .carrousel .punto.activo {

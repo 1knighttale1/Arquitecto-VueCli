@@ -36,6 +36,14 @@
   --section-gap: 160px;
 }
 
+/* colores carrusel */
+:root {
+  --sombra-ppal: #242424;
+  --sombra-sec: #3c3c3c;
+  --negro: #7b6b6b;
+  --blanco: #303030;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
