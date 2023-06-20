@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <footer>
+    <footer id="footer">
         <div class="social-icons-container">
             <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
@@ -16,13 +16,12 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-footer{
+#footer{
     width: 100%;
     position: absolute;
-    /* bottom: -42vh; */
     bottom: 0;
-    left: 0;
-    padding: 2rem 5%;
+    /* left: 0; */
+    padding: 1.5rem 5%;
     background-color: #0e0e0e;
     display: flex;
     justify-content: center;
@@ -34,7 +33,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 .social-icon{
     height: 50px;

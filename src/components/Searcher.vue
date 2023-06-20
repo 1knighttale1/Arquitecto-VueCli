@@ -1,13 +1,12 @@
 <template>
-    <div class="searcher-container">
+    <filter id="filter">
         <h3>
             <slot name="title"></slot>    
         </h3>
-    </div>
+    </filter>
 </template>
 <style scope>
-.searcher-container {
-    margin-block: .5rem;
-    margin-inline: 0rem;
+#filter {
+    padding-block: 1.5em;
 }
 </style>

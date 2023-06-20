@@ -17,11 +17,10 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 </script>
 
 <template>
-    <header id="HEADER" class="primary-header flex">
+    <header id="header" class="primary-header flex">
         <!-- start::title -->
         <div>
             <img alt="Vue logo" class="logo" src="@/assets/SVG/logo_POIESIS_white.svg" width="250" height="100" />
-            <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="100" /> -->
         </div>
         <!-- end::title -->
 
@@ -44,6 +43,14 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 </template>
 
 <style scoped>
+#header {
+    padding-inline: 2em;
+    padding-block: 0em;
+    /* position: sticky; */
+}
+.logo {
+    width: 80%;
+}
 .primary-header {
     align-items: center;
     justify-content: space-between;
@@ -100,8 +107,8 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         width: 2rem;
         border: 0;
         aspect-ratio: 1;
-        top: 3rem;
-        right: 0rem;
+        top: 4em;
+        right: 2rem;
     }
     .mobile-nav-toggle[aria-expanded="true"]{
       /* cuando se despliega el menu */

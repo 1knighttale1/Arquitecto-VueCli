@@ -24,7 +24,6 @@ import { ref } from 'vue'
 
 const items = ref(5)
 
-// const botones = Array.from({ length: items }, (_, index) => index);
 const buttonActive = ref(1)
 const positionCarrousel = ref(0)  //  posision actual del carrusel
 const sizeItems = ref(100/items.value)
@@ -34,10 +33,6 @@ function transformCarrousel(item) {
   buttonActive.value = item
   console.log(positionCarrousel.value)
   positionCarrousel.value = -sizeItems.value * (item - 1)
-  
-  // ajuste de carrusel
-  if(item==items.value){positionCarrousel.value++}
-  if(item==1){positionCarrousel.value--}
 }
 </script>
 <style scope>
@@ -52,15 +47,12 @@ function transformCarrousel(item) {
 
 .carrousel {
   width: 100%;
-  max-width: 120em;
-  padding: 1em;
-  /* color: var(--negro); */
+  max-width: 70em;
+  margin-block: 1.5em;
   transition: all 0.4s ease;
   border-radius: 1em;
-  /* background-color: var(--blanco); */
-  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
-
   overflow: hidden;
+  margin: 1.5em auto;
 }
 
 .carrousel .grande {
@@ -70,31 +62,23 @@ function transformCarrousel(item) {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  /* color: var(--negro); */
   transition: all 0.4s ease;
-  border-radius: 1em;
-  /* background-color: var(--blanco); */
-  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
-  padding: 1em;
+  border-radius: 2em;
   transition: all 0.5s ease;
   transform: translateX(-25%);
 }
 
 .carrousel .img-carrousel {
-/* .carrousel { */
   width: calc( 100% / 2 - 2em);
   min-height: 10vh;
-  /* color: var(--negro); */
   transition: all 0.4s ease;
   border-radius: 1em;
-  /* background-color: var(--blanco); */
-  /* box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
 
 .carrousel .puntos {
   width: 100%;
   margin: 1em 0 0;
-  padding: 0.4em;
+  padding: 0.5em;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -102,8 +86,8 @@ function transformCarrousel(item) {
 }
 
 .carrousel .punto {
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
   margin: 1em 1em 0;
   list-style: none;
   color: var(--negro);

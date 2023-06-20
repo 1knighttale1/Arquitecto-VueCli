@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
     <Header />
-    <div>
+    <div class="container-body">
         <Searcher>
             <template #title>{{ msg }}</template>
         </Searcher>
@@ -20,3 +20,8 @@ const props = defineProps({
     </div>
     <Footer />
 </template>
+<style>
+.container-body {
+    padding-inline: 2em;
+}
+</style>
