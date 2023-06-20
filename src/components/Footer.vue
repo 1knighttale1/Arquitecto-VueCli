@@ -18,9 +18,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 #footer{
     width: 100%;
-    position: absolute;
     bottom: 0;
-    /* left: 0; */
     padding: 1.5rem 5%;
     background-color: #0e0e0e;
     display: flex;

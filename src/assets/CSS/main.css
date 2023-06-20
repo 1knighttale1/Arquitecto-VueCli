@@ -6,12 +6,11 @@
   font-weight: normal;
   /* ancho pantalla telefono */
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-/* ancho pantalla escritorio */
-@media (min-width: 45em){
-  #app {
-    min-height: 120%;
-  }
+.container-body {
+  flex-grow: 1;
 }
 a,
 .white {
