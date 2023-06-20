@@ -1,6 +1,6 @@
 <template>
-    <div class="carrousel">
-        <div :class="['grande']" 
+    <div class="container-central">
+        <div :class="['carrousel']" 
         :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
             <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
             <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
@@ -35,7 +35,7 @@ function transformCarrousel(item) {
   positionCarrousel.value = -sizeItems.value * (item - 1)
 }
 </script>
-<style scope>
+<style>
 .img-carrousel {
   max-width: 100%;
   width: 100%;
@@ -45,7 +45,7 @@ function transformCarrousel(item) {
   margin-inline: .5rem;
 }
 
-.carrousel {
+.container-central {
   width: 100%;
   height: 100%;
   max-width: 70em;
@@ -56,7 +56,7 @@ function transformCarrousel(item) {
   margin: 1.5em auto;
 }
 
-.carrousel .grande {
+.container-central .carrousel {
   /* el width se modificara en el template-script */
   width: 200%;
   display: flex;
@@ -76,7 +76,7 @@ function transformCarrousel(item) {
   border-radius: 1em;
 }
 
-.carrousel .puntos {
+.container-central .puntos {
   width: 100%;
   margin: 1em 0 0;
   padding: 0.5em;
@@ -86,7 +86,7 @@ function transformCarrousel(item) {
   align-items: center;
 }
 
-.carrousel .punto {
+.container-central .punto {
   width: 1.5em;
   height: 1.5em;
   margin: 1em 1em 0;
@@ -98,7 +98,7 @@ function transformCarrousel(item) {
   /* box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
 
-.carrousel .punto.activo {
+.container-central .punto.activo {
   background-color: lightblue;
 }
 </style>
