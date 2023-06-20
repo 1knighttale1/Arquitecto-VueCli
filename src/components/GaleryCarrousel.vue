@@ -47,6 +47,7 @@ function transformCarrousel(item) {
 
 .carrousel {
   width: 100%;
+  height: 100%;
   max-width: 70em;
   margin-block: 1.5em;
   transition: all 0.4s ease;
