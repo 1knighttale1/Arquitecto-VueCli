@@ -20,7 +20,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     <header id="header" class="primary-header flex">
         <!-- start::title -->
         <div>
-            <img alt="Vue logo" class="logo" src="@/assets/SVG/logo_POIESIS_white.svg" width="250" height="100" />
+            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo.svg" width="250" height="100" />
         </div>
         <!-- end::title -->
 
@@ -43,14 +43,15 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 </template>
 
 <style scoped>
+/* filter: invert(1); para el modo nocturno :v */
 #header {
     padding-inline: 2em;
     padding-block: 0em;
-    /* position: sticky; */
 }
 .logo {
     width: 60%;
     min-width: 22rem;
+    filter: invert(1);
 }
 .primary-header {
     align-items: center;
@@ -108,17 +109,19 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         position: absolute;
         z-index: 9999;
         background-color: transparent;
-        background-image: url("@/assets/SVG/menu_white.svg");
+        background-image: url("@/assets/SVG/menu_icon.svg");
         background-repeat: no-repeat;
         width: 2rem;
         border: 0;
         aspect-ratio: 1;
         top: 4em;
         right: 2rem;
+
+        filter:invert(1);
     }
     .mobile-nav-toggle[aria-expanded="true"]{
       /* cuando se despliega el menu */
-        background-image: url("@/assets/SVG/menu.svg");
+        background-image: url("@/assets/SVG/close_icon.svg");
     }
 }
 </style>

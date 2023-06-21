@@ -15,9 +15,9 @@ const store = useViewsStore()
     <Header />
     <!-- {{ store.view.isGalery }} -->
     <div class="container-body">
-        <subtitle class="" id="subtitle">
+        <div id="subtitle">
             <slot name="title"></slot>
-        </subtitle>
+        </div>
         <Carrousel v-if="store.view.isGalery"></Carrousel>        
         <AboutUs v-if="store.view.name=='Nosotros'"></AboutUs>        
         <Contact v-if="store.view.name=='Contactos'"></Contact>        

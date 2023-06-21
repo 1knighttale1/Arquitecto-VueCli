@@ -8,6 +8,7 @@ import { RouterLink } from 'vue-router'
             <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
+            <a href="" class="social-icon"></a>
         </div>
         <span class="copyright">
             &copy;2023, POIESIS. All rights reserved.
@@ -38,7 +39,7 @@ import { RouterLink } from 'vue-router'
     width: 50px;
     border-radius: 50px;
     border: 1px solid #f2f2f2;
-    background-image: url('@/assets/SVG/logo.svg');
+    background-image: url('@/assets/SVG/facebook_icon.svg');
     background-position: center;
     background-size: 60%;
     background-repeat: no-repeat;
@@ -49,13 +50,13 @@ import { RouterLink } from 'vue-router'
     filter: invert(1);
 }
 .social-icon:nth-of-type(2){
-    background-image: url('@/assets/SVG/menu_white.svg');
+    background-image: url('@/assets/SVG/instagram_icon.svg');
 }
 .social-icon:nth-of-type(3){
-    background-image: url();
+    background-image: url('@/assets/SVG/whatsapp_icon.svg');
 }
 .social-icon:nth-of-type(4){
-    background-image: url();
+    background-image: url('@/assets/SVG/youtube_icon.svg');
 }
 .footer-menu-container{
     list-style-type: none;
