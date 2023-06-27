@@ -2,12 +2,12 @@
     <div class="container-central">
         <div :class="['carrousel']" 
         :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
-            <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
-            <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
+            <img src="@/assets/IMG/01-photo.jpg" alt="Imagen 1" class="img-carrousel">
+            <img src="@/assets/IMG/02-photo.jpg" alt="Imagen 2" class="img-carrousel">
 
-            <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
-            <img src="@/assets/IMG/02.jpg" alt="Imagen 2" class="img-carrousel">
-            <img src="@/assets/IMG/01.jpg" alt="Imagen 1" class="img-carrousel">
+            <img src="@/assets/IMG/01-photo.jpg" alt="Imagen 3" class="img-carrousel">
+            <img src="@/assets/IMG/04-photo.jpg" alt="Imagen 4" class="img-carrousel">
+            <img src="@/assets/IMG/05-photo.jpg" alt="Imagen 5" class="img-carrousel">
         </div>
 
         <ul class="puntos">
@@ -38,11 +38,17 @@ function transformCarrousel(item) {
 <style>
 .img-carrousel {
   max-width: 100%;
-  width: 100%;
+  min-height: 40vh;
+  height: 100%;
+  overflow: hidden;
   display: block;
   object-fit: cover;
   object-position: center center;
   margin-inline: .5rem;
+}
+.img-carrousel img {
+  width: 100%;
+  height: auto;
 }
 
 .container-central {
