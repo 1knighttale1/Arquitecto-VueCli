@@ -90,7 +90,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         --gap: 4em;
 
         position: fixed;
-        z-index: 1000;
+        z-index: 9998;
         /* inset: 0 0 0 45%; */
         inset: 0 0 0 0%;
 

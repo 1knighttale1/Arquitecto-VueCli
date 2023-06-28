@@ -1,28 +1,52 @@
+<!-- nota: imagenes muy altas pueden desconfigurar la vista del carrusel, ajustar para futuro
+o dar preferencia a imagenes cuadradas -->
 <template>
     <div class="container-central">
-        <div :class="['carrousel']" 
-        :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
-            <img src="@/assets/IMG/01-photo.jpg" alt="Imagen 1" class="img-carrousel">
-            <img src="@/assets/IMG/02-photo.jpg" alt="Imagen 2" class="img-carrousel">
 
-            <img src="@/assets/IMG/01-photo.jpg" alt="Imagen 3" class="img-carrousel">
-            <img src="@/assets/IMG/04-photo.jpg" alt="Imagen 4" class="img-carrousel">
-            <img src="@/assets/IMG/05-photo.jpg" alt="Imagen 5" class="img-carrousel">
+      <!-- buttons::start -->
+      <div class="button-right" @click="moveCarrousel(1)"></div>
+      <div class="button-left" @click="moveCarrousel(-1)"></div>
+      <!-- buttons::end -->
+
+      <!-- carrousel::start -->
+      <div :class="['carrousel']" :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
+        <div class="img-carrousel" v-for="image in images" :key="image.title">
+          <span class="title">
+            {{ image.title.toUpperCase() }}
+          </span>
+          <div class="description">
+            {{ image.short_description }}
+          </div>
+          <img :src="image.address" :alt="image.title">
         </div>
+      </div>
+      <!-- carrousel::end -->
 
-        <ul class="puntos">
-            <li v-for="item in items" 
-            :key="item" 
-            @click="transformCarrousel(item)" 
-            :style="{ transform: `translateX(${positionCarrousel}%)`}"
-            :class="['punto', { activo: item === buttonActive }]"></li>
-        </ul>
+      <!-- points::start -->
+      <ul class="puntos">
+        <li v-for="item in items" 
+        :key="item" 
+        @click="transformCarrousel(item)" 
+        :style="{ transform: `translateX(${positionCarrousel}%)`}"
+        :class="['punto', { activo: item === buttonActive }]"></li>
+      </ul>
+      <!-- points::end -->
     </div>
 </template>
 <script setup>
 import { ref } from 'vue'
 
-const items = ref(5)
+
+let id = 0
+const images = ref([
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/04-photo.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "/src/assets/IMG/05-photo.jpg", short_description: "breve descripcion de la imagen."}
+])
+const items = ref(images.value.length)
 
 const buttonActive = ref(1)
 const positionCarrousel = ref(0)  //  posision actual del carrusel
@@ -31,15 +55,50 @@ const sizeCarrousel = ref(100 * items.value)
 
 function transformCarrousel(item) {
   buttonActive.value = item
-  console.log(positionCarrousel.value)
+  // console.log(positionCarrousel.value)
   positionCarrousel.value = -sizeItems.value * (item - 1)
 }
+function moveCarrousel(button) {
+  // button==1 ? console.log("move right"):console.log("move left")
+  buttonActive.value += button
+  if(buttonActive.value <= 0) {buttonActive.value = items.value}
+  if(buttonActive.value > items.value) {buttonActive.value = 1}
+  transformCarrousel(buttonActive.value)
+  // console.log(buttonActive.value)
+}
+
 </script>
 <style>
+.container-central .button-right, .container-central .button-left {
+  position: absolute;
+  width: 3em;
+  height: 7em;
+  border-radius: .5em;
+  top: 7rem;
+  background: hsla(0, 0%, 35%, 0.5);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80%;
+  z-index: 1000;
+}
+@media (min-width: 35em){
+  .container-central .button-right, .container-central .button-left {
+        top: 30%;
+    }
+}
+.container-central .button-left {
+  left: 0;
+  background-image: url('../assets/SVG/arrow_icon.svg');
+  transform: scaleX(-1);
+}
+.container-central .button-right {
+  right: 0;
+  background-image: url('../assets/SVG/arrow_icon.svg');
+}
 .img-carrousel {
-  max-width: 100%;
   min-height: 40vh;
   height: 100%;
+  max-height: 80vh;
   overflow: hidden;
   display: block;
   object-fit: cover;
@@ -48,13 +107,35 @@ function transformCarrousel(item) {
 }
 .img-carrousel img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
-
+.img-carrousel .title {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  padding: .4rem;
+  color: white;
+  background: hsla(0 0% 0% / 0.6);
+  top: 1rem;
+  left: 0;
+  z-index: 1000;
+}
+.img-carrousel .description {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  padding: .4rem;
+  color: white;
+  background: hsla(0 0% 0% / 0.6);
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  z-index: 1000;
+}
 .container-central {
   width: 100%;
   height: 100%;
-  max-width: 70em;
+  max-width: 40em;
   margin-block: 1.5em;
   transition: all 0.4s ease;
   border-radius: 1em;
@@ -71,7 +152,7 @@ function transformCarrousel(item) {
   align-items: center;
   transition: all 0.4s ease;
   border-radius: 2em;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   transform: translateX(-25%);
 }
 
