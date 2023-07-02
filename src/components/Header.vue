@@ -17,11 +17,10 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 </script>
 
 <template>
-    <header id="HEADER" class="primary-header flex">
+    <header id="header" class="primary-header flex">
         <!-- start::title -->
         <div>
-            <img alt="Vue logo" class="logo" src="@/assets/SVG/logo_POIESIS_white.svg" width="250" height="100" />
-            <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="100" /> -->
+            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo.svg" width="250" height="100" />
         </div>
         <!-- end::title -->
 
@@ -44,6 +43,16 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 </template>
 
 <style scoped>
+/* filter: invert(1); para el modo nocturno :v */
+#header {
+    padding-inline: 2em;
+    padding-block: 0em;
+}
+.logo {
+    width: 60%;
+    min-width: 22rem;
+    filter: invert(1);
+}
 .primary-header {
     align-items: center;
     justify-content: space-between;
@@ -56,12 +65,12 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     padding: 0;
     margin: 0;
     
-    background: hsla(0 0% 0% / 0.5);
+    background: hsla(0 0% 0% / 0.8);
     backdrop-filter: blur(1rem);
 }
 @supports (backdrop-filter: blur(1rem)) {
     .primary-navigation {
-        background: hsla(0 0% 100% / 0.1);
+        background: hsla(0 0% 0% / 0.8);
         backdrop-filter: blur(1rem);
     }
 }
@@ -73,16 +82,21 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     }
 }
 @media (max-width: 65em){
+    .logo {
+        width: 50%;
+        min-width: 16rem;
+    }
     .primary-navigation {
         --gap: 4em;
 
         position: fixed;
-        z-index: 1000;
+        z-index: 9998;
         /* inset: 0 0 0 45%; */
         inset: 0 0 0 0%;
 
         flex-direction: column;
-        padding: min(30vh, 10rem) min(20vw, 25rem);
+        /* padding: min(30vh, 10rem) min(50vw, 25rem); */
+        padding: min(30vh, 40vh) min(40vw);
 
         transform: translateX(100%);
         transition: transform 350ms ease-out;
@@ -95,17 +109,19 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         position: absolute;
         z-index: 9999;
         background-color: transparent;
-        background-image: url("@/assets/SVG/menu_white.svg");
+        background-image: url("@/assets/SVG/menu_icon.svg");
         background-repeat: no-repeat;
         width: 2rem;
         border: 0;
         aspect-ratio: 1;
-        top: 3rem;
-        right: 0rem;
+        top: 4em;
+        right: 2rem;
+
+        filter:invert(1);
     }
     .mobile-nav-toggle[aria-expanded="true"]{
       /* cuando se despliega el menu */
-        background-image: url("@/assets/SVG/menu.svg");
+        background-image: url("@/assets/SVG/close_icon.svg");
     }
 }
 </style>

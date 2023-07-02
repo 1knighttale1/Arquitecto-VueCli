@@ -1,22 +1,37 @@
 <script setup>
 import Header from './Header.vue'
-import Searcher from './Searcher.vue'
-import Carrousel from './GaleryCarrousel.vue'
 import Footer from './Footer.vue'
+import Carrousel from './GaleryCarrousel.vue'
+import Contact from './ContactItem.vue'
+import AboutUs from './AboutUsItem.vue'
 
-const props = defineProps({
-  msg: String
-})
+import { ref } from 'vue'
+import { useViewsStore } from '../stores/views'
+
+const store = useViewsStore()
 </script>
 
 <template>
     <Header />
-    <div>
-        <Searcher>
-            <template #title>{{ msg }}</template>
-        </Searcher>
-        <Carrousel>
-        </Carrousel>
+    <!-- {{ store.view.isGalery }} -->
+    <div class="container-body">
+        <div id="subtitle">
+            <slot name="title"></slot>
+        </div>
+        <Carrousel v-if="store.view.isGalery"></Carrousel>        
+        <AboutUs v-if="store.view.name=='Nosotros'"></AboutUs>        
+        <Contact v-if="store.view.name=='Contactos'"></Contact>        
     </div>
     <Footer />
 </template>
+<style>
+.container-body {
+    padding-inline: 2em;
+}
+#subtitle {
+    padding-block: .5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+</style>
