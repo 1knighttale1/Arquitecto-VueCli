@@ -7,7 +7,7 @@ const menuHeader = ref(false)
 
 let id = 0
 const menus = ref([
-  { id: id++, text: 'PROYECTOS', url: '/proyectos' },
+  { id: id++, text: 'PROYECTOS', url: '/' },
   { id: id++, text: 'OBRAS', url:'/obras' },
   { id: id++, text: 'NOSOTROS', url:'/nosotros' },
   { id: id++, text: 'CONTACTOS', url:'/contactos' },
