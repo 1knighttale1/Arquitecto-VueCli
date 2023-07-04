@@ -39,12 +39,12 @@ import { ref } from 'vue'
 
 let id = 0
 const images = ref([
-  { title: "Titulo " + ++id, address: "IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  // { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  // { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
-  // { title: "Titulo " + ++id, address: "/src/assets/IMG/04-photo.jpg", short_description: "breve descripcion de la imagen."},
-  // { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  // { title: "Titulo " + ++id, address: "/src/assets/IMG/05-photo.jpg", short_description: "breve descripcion de la imagen."}
+  { title: "Titulo " + ++id, address: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "https://cdn.forbes.com.mx/2020/07/hoteles-Grand-Velas-Resorts-e1596047698604.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "https://www.viajandoporelmundomundial.com/wp-content/uploads/2022/01/portada-hoteles-cancun-1024x682.jpg.webp", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "https://content.r9cdn.net/himg/62/c0/84/ice-85676218-68620422_3XL-430714.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "https://cdn.forbes.com.mx/2020/07/hoteles-Grand-Velas-Resorts-e1596047698604.jpg", short_description: "breve descripcion de la imagen."},
+  { title: "Titulo " + ++id, address: "https://www.viajandoporelmundomundial.com/wp-content/uploads/2022/01/portada-hoteles-cancun-1024x682.jpg.webp", short_description: "breve descripcion de la imagen."}
 ])
 const items = ref(images.value.length)
 
