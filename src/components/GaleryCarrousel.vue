@@ -17,7 +17,7 @@ o dar preferencia a imagenes cuadradas -->
           <div class="description">
             {{ image.short_description }}
           </div>
-          <img :src="image.address" :alt="image.title">
+          <img :src="`src/assets/${image.address}`" :alt="image.title">
         </div>
       </div>
       <!-- carrousel::end -->
@@ -39,12 +39,12 @@ import { ref } from 'vue'
 
 let id = 0
 const images = ref([
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/04-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/05-photo.jpg", short_description: "breve descripcion de la imagen."}
+  { title: "Titulo " + ++id, address: "IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
+  // { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
+  // { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
+  // { title: "Titulo " + ++id, address: "/src/assets/IMG/04-photo.jpg", short_description: "breve descripcion de la imagen."},
+  // { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
+  // { title: "Titulo " + ++id, address: "/src/assets/IMG/05-photo.jpg", short_description: "breve descripcion de la imagen."}
 ])
 const items = ref(images.value.length)
 
