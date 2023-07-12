@@ -7,7 +7,7 @@ const menuHeader = ref(false)
 
 let id = 0
 const menus = ref([
-  { id: id++, text: 'PROYECTOS', url: '/proyectos' },
+  { id: id++, text: 'PROYECTOS', url: '/' },
   { id: id++, text: 'OBRAS', url:'/obras' },
   { id: id++, text: 'NOSOTROS', url:'/nosotros' },
   { id: id++, text: 'CONTACTOS', url:'/contactos' },
@@ -20,7 +20,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     <header id="header" class="primary-header flex">
         <!-- start::title -->
         <div>
-            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo.svg" width="250" height="100" />
+            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo-white.svg" width="250" height="100" />
         </div>
         <!-- end::title -->
 
@@ -51,7 +51,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 .logo {
     width: 60%;
     min-width: 22rem;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 .primary-header {
     align-items: center;

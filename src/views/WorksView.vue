@@ -1,7 +1,7 @@
 <template>
     <Base>
         <template #title>
-            <h2 class="sub-title">{{ store.view.name }}</h2>
+            <h3 class="sub-title">{{ store.view.name.toUpperCase() }}</h3>
         </template>
     </Base>
 </template>
