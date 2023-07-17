@@ -69,23 +69,19 @@ function moveCarrousel(button) {
 
 </script>
 <style>
+/* botones */
 .container-central .button-right, .container-central .button-left {
   position: absolute;
   width: 3em;
-  height: 7em;
+  height: 9em;
   border-radius: .5em;
-  top: 7rem;
+  top: 30%;
   filter: invert(1);
   background: hsla(0, 100%, 100%, 0.8);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 80%;
   z-index: 1000;
-}
-@media (min-width: 35em){
-  .container-central .button-right, .container-central .button-left {
-        top: 30%;
-    }
 }
 .container-central .button-left {
   left: .7em;
@@ -96,6 +92,14 @@ function moveCarrousel(button) {
   right: .6em;
   background-image: url('../assets/SVG/arrow_icon.svg');
 }
+@media (max-width: 35em){
+  .container-central .button-right, .container-central .button-left {
+    top: 25%;
+    height: 5em;
+    width: 2.5em;
+  }
+}
+/* carrousel */
 .img-carrousel {
   min-height: 40vh;
   height: 100%;
@@ -186,8 +190,14 @@ function moveCarrousel(button) {
   background-color: var(--blanco);
   /* box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
-
 .container-central .punto.activo {
   background-color: lightblue;
+}
+/* pantalla telefono */
+@media (max-width: 35em){
+  .img-carrousel .title {
+    font-weight: normal;
+    padding: .3rem;
+  }
 }
 </style>
