@@ -75,7 +75,8 @@ function moveCarrousel(button) {
   height: 7em;
   border-radius: .5em;
   top: 7rem;
-  background: hsla(0, 0%, 35%, 0.5);
+  filter: invert(1);
+  background: hsla(0, 100%, 100%, 0.8);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 80%;
@@ -87,12 +88,12 @@ function moveCarrousel(button) {
     }
 }
 .container-central .button-left {
-  left: 0;
+  left: .7em;
   background-image: url('../assets/SVG/arrow_icon.svg');
   transform: scaleX(-1);
 }
 .container-central .button-right {
-  right: 0;
+  right: .6em;
   background-image: url('../assets/SVG/arrow_icon.svg');
 }
 .img-carrousel {
@@ -110,10 +111,11 @@ function moveCarrousel(button) {
   height: 100%;
 }
 .img-carrousel .title {
+  font-weight: bold;
   position: absolute;
   display: block;
   overflow: hidden;
-  padding: .4rem;
+  padding: .8rem;
   color: white;
   background: hsla(0 0% 0% / 0.6);
   top: 1rem;
@@ -124,12 +126,12 @@ function moveCarrousel(button) {
   position: absolute;
   display: block;
   overflow: hidden;
-  padding: .4rem;
+  padding: .8rem;
   color: white;
   background: hsla(0 0% 0% / 0.6);
   bottom: 0;
   width: 100%;
-  height: 10vh;
+  /* height: 10vh; */
   z-index: 1000;
 }
 .container-central {
