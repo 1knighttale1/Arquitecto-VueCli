@@ -30,8 +30,12 @@ const store = useViewsStore()
 }
 #subtitle {
     padding-block: .5em;
+    padding-inline: .5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+h3 {
+    font-weight: bold;
 }
 </style>
