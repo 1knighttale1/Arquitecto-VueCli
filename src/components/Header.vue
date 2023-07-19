@@ -20,7 +20,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     <header id="header" class="primary-header flex">
         <!-- start::title -->
         <div>
-            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo.svg" width="250" height="100" />
+            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo-white.svg" width="250" height="100" />
         </div>
         <!-- end::title -->
 
@@ -51,7 +51,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 .logo {
     width: 60%;
     min-width: 22rem;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 .primary-header {
     align-items: center;
@@ -74,54 +74,57 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         backdrop-filter: blur(1rem);
     }
 }
+.primary-navigation {
+    --gap: 4em;
+
+    position: fixed;
+    z-index: 9998;
+    /* inset: 0 0 0 45%; */
+    inset: 0 0 0 0%;
+
+    flex-direction: column;
+    /* padding: min(30vh, 10rem) min(50vw, 25rem); */
+    padding: min(30vh, 40vh) min(10vw);
+
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+}
+.mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    background-color: transparent;
+    background-image: url("@/assets/SVG/menu_icon.svg");
+    background-repeat: no-repeat;
+    width: 2rem;
+    border: 0;
+    aspect-ratio: 1;
+    top: 4em;
+    right: 2rem;
+
+    filter:invert(1);
+}
+.mobile-nav-toggle[aria-expanded="true"]{
+    /* cuando se despliega el menu */
+    background-image: url("@/assets/SVG/close_icon.svg");
+}
+/* pantalla pc */
 @media (min-width: 35em){
-    .primary-navigation{
-        padding-block: 1rem;
-        padding-inline: 3rem;
-        /* padding-inline: clamp(1rem, 5vw, 5em); */
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(75%);        
     }
 }
+/* pantalla telefono */
 @media (max-width: 65em){
     .logo {
         width: 50%;
         min-width: 16rem;
     }
-    .primary-navigation {
-        --gap: 4em;
-
-        position: fixed;
-        z-index: 9998;
-        /* inset: 0 0 0 45%; */
-        inset: 0 0 0 0%;
-
-        flex-direction: column;
-        /* padding: min(30vh, 10rem) min(50vw, 25rem); */
-        padding: min(30vh, 40vh) min(40vw);
-
-        transform: translateX(100%);
-        transition: transform 350ms ease-out;
-    }
     .primary-navigation[data-visible="true"]{
-        transform: translateX(0%);        
+        transform: translateX(0%);
     }
-    .mobile-nav-toggle {
-        display: block;
-        position: absolute;
-        z-index: 9999;
-        background-color: transparent;
-        background-image: url("@/assets/SVG/menu_icon.svg");
-        background-repeat: no-repeat;
-        width: 2rem;
-        border: 0;
-        aspect-ratio: 1;
-        top: 4em;
-        right: 2rem;
-
-        filter:invert(1);
-    }
-    .mobile-nav-toggle[aria-expanded="true"]{
-      /* cuando se despliega el menu */
-        background-image: url("@/assets/SVG/close_icon.svg");
+    .primary-navigation {
+        padding: min(30vh, 40vh) min(40vw);
     }
 }
 </style>

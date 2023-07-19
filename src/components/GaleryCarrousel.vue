@@ -69,32 +69,37 @@ function moveCarrousel(button) {
 
 </script>
 <style>
+/* botones */
 .container-central .button-right, .container-central .button-left {
   position: absolute;
   width: 3em;
-  height: 7em;
+  height: 9em;
   border-radius: .5em;
-  top: 7rem;
-  background: hsla(0, 0%, 35%, 0.5);
+  top: 30%;
+  filter: invert(1);
+  background: hsla(0, 100%, 100%, 0.8);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 80%;
   z-index: 1000;
 }
-@media (min-width: 35em){
-  .container-central .button-right, .container-central .button-left {
-        top: 30%;
-    }
-}
 .container-central .button-left {
-  left: 0;
+  left: .7em;
   background-image: url('../assets/SVG/arrow_icon.svg');
   transform: scaleX(-1);
 }
 .container-central .button-right {
-  right: 0;
+  right: .6em;
   background-image: url('../assets/SVG/arrow_icon.svg');
 }
+@media (max-width: 35em){
+  .container-central .button-right, .container-central .button-left {
+    top: 25%;
+    height: 5em;
+    width: 2.5em;
+  }
+}
+/* carrousel */
 .img-carrousel {
   min-height: 40vh;
   height: 100%;
@@ -110,10 +115,11 @@ function moveCarrousel(button) {
   height: 100%;
 }
 .img-carrousel .title {
+  font-weight: bold;
   position: absolute;
   display: block;
   overflow: hidden;
-  padding: .4rem;
+  padding: .8rem;
   color: white;
   background: hsla(0 0% 0% / 0.6);
   top: 1rem;
@@ -124,12 +130,12 @@ function moveCarrousel(button) {
   position: absolute;
   display: block;
   overflow: hidden;
-  padding: .4rem;
+  padding: .8rem;
   color: white;
   background: hsla(0 0% 0% / 0.6);
   bottom: 0;
   width: 100%;
-  height: 10vh;
+  /* height: 10vh; */
   z-index: 1000;
 }
 .container-central {
@@ -184,8 +190,14 @@ function moveCarrousel(button) {
   background-color: var(--blanco);
   /* box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
-
 .container-central .punto.activo {
   background-color: lightblue;
+}
+/* pantalla telefono */
+@media (max-width: 35em){
+  .img-carrousel .title {
+    font-weight: normal;
+    padding: .3rem;
+  }
 }
 </style>
