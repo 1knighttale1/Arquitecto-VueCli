@@ -1,8 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
+import { useViewsStore } from "../stores/views"
 
-const name = "Poiesis"
+const store = useViewsStore()
 const menuHeader = ref(false)
 
 let id = 0
@@ -12,8 +13,8 @@ const menus = ref([
   { id: id++, text: 'NOSOTROS', url:'/nosotros' },
   { id: id++, text: 'CONTACTOS', url:'/contactos' },
 ])
-
 function showMenu(){ menuHeader.value = !menuHeader.value }
+
 </script>
 
 <template>
@@ -33,8 +34,8 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         <!-- start::nav -->
         <nav>
         <ul id="primary-navigation" :data-visible="menuHeader" class="primary-navigation flex">
-            <li v-for="menu in menus" :key="menu.id">
-                <RouterLink :to="menu.url">{{ menu.text }}</RouterLink>
+            <li v-for="menu in menus" :key="menu.id" class="flex menu">
+                <RouterLink :to="menu.url" class="menu flex" :data-active="store.view.name.toUpperCase()==menu.text">{{ menu.text }}</RouterLink>
             </li>
         </ul>
         </nav>
@@ -44,6 +45,33 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 
 <style scoped>
 /* filter: invert(1); para el modo nocturno :v */
+/* configuracion menu */
+li.menu {
+    justify-content: center;
+}
+a.menu {
+    padding: .4em;
+    justify-content: center;
+    min-width: 7em;
+}
+/* resaltador vista activa */
+a.menu[data-active="true"]:before , a.menu[data-active="true"]:after {
+    position: absolute;
+    opacity: 1;
+    width: 100%;
+    height: 2px;
+    content: '';
+    background: #FFF;
+}
+a.menu[data-active="true"]:before {
+    left: 0px;
+    top: 0px;
+}
+a.menu[data-active="true"]:after {
+    right: 0px;
+    bottom: 0px;
+}
+/* configuracion header */
 #header {
     padding-inline: 2em;
     padding-block: 0em;
@@ -57,38 +85,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
     align-items: center;
     justify-content: space-between;
 }
-.mobile-nav-toggle {
-    display: none;
-}
-.primary-navigation {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    
-    background: hsla(0 0% 0% / 0.8);
-    backdrop-filter: blur(1rem);
-}
-@supports (backdrop-filter: blur(1rem)) {
-    .primary-navigation {
-        background: hsla(0 0% 0% / 0.8);
-        backdrop-filter: blur(1rem);
-    }
-}
-.primary-navigation {
-    --gap: 4em;
-
-    position: fixed;
-    z-index: 9998;
-    /* inset: 0 0 0 45%; */
-    inset: 0 0 0 0%;
-
-    flex-direction: column;
-    /* padding: min(30vh, 10rem) min(50vw, 25rem); */
-    padding: min(30vh, 40vh) min(10vw);
-
-    transform: translateX(100%);
-    transition: transform 350ms ease-out;
-}
+/* configuracion nav menu */
 .mobile-nav-toggle {
     display: block;
     position: absolute;
@@ -107,12 +104,35 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 .mobile-nav-toggle[aria-expanded="true"]{
     /* cuando se despliega el menu */
     background-image: url("@/assets/SVG/close_icon.svg");
+    right: -8vw;
 }
-/* pantalla pc */
-@media (min-width: 35em){
-    .primary-navigation[data-visible="true"]{
-        transform: translateX(75%);        
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    background: hsla(0 0% 0% / 0.8);
+    backdrop-filter: blur(1rem);
+}
+@supports (backdrop-filter: blur(1rem)) {
+    .primary-navigation {
+        background: hsla(0 0% 0% / 0.8);
+        backdrop-filter: blur(1rem);
     }
+}
+.primary-navigation {
+    --gap: 4em;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    z-index: 9998;
+    inset: 0 0 0 70%;
+
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+}
+.primary-navigation[data-visible="true"]{
+    transform: translateX(0%);
 }
 /* pantalla telefono */
 @media (max-width: 65em){
@@ -120,11 +140,11 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         width: 50%;
         min-width: 16rem;
     }
-    .primary-navigation[data-visible="true"]{
-        transform: translateX(0%);
-    }
     .primary-navigation {
-        padding: min(30vh, 40vh) min(40vw);
+        inset: 0 0 0 0%;
     }
+    .mobile-nav-toggle[aria-expanded="true"]{
+    right: 2rem;
+}
 }
 </style>
