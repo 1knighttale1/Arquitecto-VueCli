@@ -73,7 +73,7 @@ import { RouterLink } from 'vue-router'
 }
 .copyright{
     color: #f2f2f2;
-    opacity: 0.3;
+    opacity: 0.9;
     text-align: center;
 }
 </style>

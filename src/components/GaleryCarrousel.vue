@@ -17,7 +17,9 @@ o dar preferencia a imagenes cuadradas -->
           <div class="description">
             {{ image.short_description }}
           </div>
-          <img :src="image.address" :alt="image.title">
+          <div class="container-img">
+            <img :src="image.address" :alt="image.title">
+          </div>
         </div>
       </div>
       <!-- carrousel::end -->
@@ -75,7 +77,7 @@ function moveCarrousel(button) {
   width: 3em;
   height: 9em;
   border-radius: .5em;
-  top: 30%;
+  top: 35%;
   filter: invert(1);
   background: hsla(0, 100%, 100%, 0.8);
   background-repeat: no-repeat;
@@ -94,26 +96,26 @@ function moveCarrousel(button) {
 }
 @media (max-width: 35em){
   .container-central .button-right, .container-central .button-left {
-    top: 25%;
     height: 5em;
     width: 2.5em;
   }
 }
 /* carrousel */
 .img-carrousel {
-  min-height: 40vh;
-  height: 100%;
-  max-height: 80vh;
   overflow: hidden;
-  display: block;
-  object-fit: cover;
-  object-position: center center;
-  margin-inline: .5rem;
+}
+.img-carrousel .container-img {
+  width: 100%;
+  height: 80vw;
+  max-height: 40em;
+  margin-inline: .1em;
 }
 .img-carrousel img {
+  position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
+/* componentes carrusel (titulo, descripcion) */
 .img-carrousel .title {
   font-weight: bold;
   position: absolute;
@@ -125,6 +127,12 @@ function moveCarrousel(button) {
   top: 1rem;
   left: 0;
   z-index: 1000;
+}
+@media (max-width: 35em){
+  .img-carrousel .title {
+    font-weight: normal;
+    padding: .3rem;
+  }
 }
 .img-carrousel .description {
   position: absolute;
@@ -138,9 +146,10 @@ function moveCarrousel(button) {
   /* height: 10vh; */
   z-index: 1000;
 }
+/* contenedor central */
 .container-central {
   width: 100%;
-  height: 100%;
+  /* height: 100vw; */
   max-width: 40em;
   margin-block: 1.5em;
   transition: all 0.4s ease;
@@ -148,16 +157,11 @@ function moveCarrousel(button) {
   overflow: hidden;
   margin: 1.5em auto;
 }
-
 .container-central .carrousel {
-  /* el width se modificara en el template-script */
-  width: 200%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
   transition: all 0.4s ease;
-  border-radius: 2em;
   transition: all 0.3s ease;
   transform: translateX(-25%);
 }
@@ -169,6 +173,7 @@ function moveCarrousel(button) {
   border-radius: 1em;
 }
 
+/* puntos de carrousel */
 .container-central .puntos {
   width: 100%;
   margin: 1em 0 0;
@@ -178,7 +183,6 @@ function moveCarrousel(button) {
   justify-content: center;
   align-items: center;
 }
-
 .container-central .punto {
   width: 1.5em;
   height: 1.5em;
@@ -188,16 +192,8 @@ function moveCarrousel(button) {
   transition: all 0.4s ease;
   border-radius: 1em;
   background-color: var(--blanco);
-  /* box-shadow: 0.6em 0.6em 1.2em var(--sombra-ppal), -0.6em -0.6em 1.2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent; */
 }
 .container-central .punto.activo {
   background-color: lightblue;
-}
-/* pantalla telefono */
-@media (max-width: 35em){
-  .img-carrousel .title {
-    font-weight: normal;
-    padding: .3rem;
-  }
 }
 </style>
