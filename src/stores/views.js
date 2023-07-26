@@ -6,9 +6,8 @@ export const useViewsStore = defineStore("view", ()=>{
         name: "",
         isGalery: true,
     });
-    const chanceView = (newView, activeGalery) => {
+    const chanceView = (newView) => {
         view.value.name = newView;
-        view.value.isGalery = activeGalery;
     };
 
     return { view, chanceView };

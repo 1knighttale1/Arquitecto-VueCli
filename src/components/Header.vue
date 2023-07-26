@@ -8,10 +8,10 @@ const menuHeader = ref(false)
 
 let id = 0
 const menus = ref([
-  { id: id++, text: 'PROYECTOS', url: '/' },
-  { id: id++, text: 'OBRAS', url:'/obras' },
-  { id: id++, text: 'NOSOTROS', url:'/nosotros' },
-  { id: id++, text: 'CONTACTOS', url:'/contactos' },
+  { id: id++, text: 'PROYECTOS', url: '/', active:  'projects'},
+  { id: id++, text: 'OBRAS', url:'/works', active: 'works' },
+  { id: id++, text: 'NOSOTROS', url:'/aboutus', active: 'aboutus' },
+  { id: id++, text: 'CONTACTOS', url:'/contacts', active: 'contacts' },
 ])
 function showMenu(){ menuHeader.value = !menuHeader.value }
 
@@ -20,9 +20,13 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
 <template>
     <header id="header" class="primary-header flex">
         <!-- start::title -->
-        <div>
-            <img alt="Vue logo" class="logo" src="@/assets/SVG/POIESIS_logo-white.svg" width="250" height="100" />
-        </div>
+        <!-- <RouterLink to="">
+        </RouterLink> -->
+        <router-link to="/">
+            <img class="logo" 
+            src="@/assets/SVG/POIESIS_logo-white.svg" 
+            width="250" height="100" />
+        </router-link>
         <!-- end::title -->
 
         <!-- start::menu -->
@@ -35,7 +39,7 @@ function showMenu(){ menuHeader.value = !menuHeader.value }
         <nav>
         <ul id="primary-navigation" :data-visible="menuHeader" class="primary-navigation flex">
             <li v-for="menu in menus" :key="menu.id" class="flex menu">
-                <RouterLink :to="menu.url" class="menu flex" :data-active="store.view.name.toUpperCase()==menu.text">{{ menu.text }}</RouterLink>
+                <RouterLink :to="menu.url" class="menu flex" :data-active="store.view.name==menu.active">{{ menu.text }}</RouterLink>
             </li>
         </ul>
         </nav>

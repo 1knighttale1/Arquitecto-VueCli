@@ -1,7 +1,7 @@
 <template>
     <Base>
         <template #title>
-            <h3 class="sub-title">{{ store.view.name.toUpperCase() }}</h3>
+            <h3 class="sub-title">{{ "contactos".toUpperCase() }}</h3>
         </template>
     </Base>
 </template>
@@ -9,12 +9,16 @@
 <script setup>
 import Base from '../components/Base.vue'
 import { useViewsStore } from "../stores/views";
+import { useDataStore } from "../stores/data";
 import { ref } from 'vue'
 
 const view = ref({
-    name: 'Contactos',
+    name: 'contacts',
     galery: false
 })
-const store = useViewsStore()
-store.chanceView(view.value.name, view.value.galery)
+const storeViews = useViewsStore()
+const storeData = useDataStore()
+
+storeViews.chanceView(view.value.name, view.value.galery)
+storeData.updateContacts()
 </script>

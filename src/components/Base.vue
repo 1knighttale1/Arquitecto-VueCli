@@ -1,14 +1,16 @@
 <script setup>
 import Header from './Header.vue'
 import Footer from './Footer.vue'
-import Carrousel from './GaleryCarrousel.vue'
+import Carrousel from './CarrouselItem.vue'
 import Contact from './ContactItem.vue'
 import AboutUs from './AboutUsItem.vue'
+import Detail from './DetailItem.vue'
 
 import { ref } from 'vue'
 import { useViewsStore } from '../stores/views'
 
 const store = useViewsStore()
+const view = store.view.name
 </script>
 
 <template>
@@ -18,9 +20,10 @@ const store = useViewsStore()
         <div id="subtitle">
             <slot name="title"></slot>
         </div>
-        <Carrousel v-if="store.view.isGalery"></Carrousel>        
-        <AboutUs v-if="store.view.name=='Nosotros'"></AboutUs>        
-        <Contact v-if="store.view.name=='Contactos'"></Contact>        
+        <slot name="body"></slot>    
+        <!-- <Detail v-if="view=='details'"></Detail>         -->
+        <!-- <AboutUs v-if="view=='aboutus'"></AboutUs>         -->
+        <Contact v-if="view=='contacts'"></Contact>        
     </div>
     <Footer />
 </template>

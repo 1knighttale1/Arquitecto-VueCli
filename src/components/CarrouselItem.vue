@@ -1,72 +1,75 @@
-<!-- nota: imagenes muy altas pueden desconfigurar la vista del carrusel, ajustar para futuro
-o dar preferencia a imagenes cuadradas -->
+<!-- nota: imagenes muy largas pueden desconfigurar la vista del carrusel, 
+dar preferencia a imagenes cuadradas -->
 <template>
-    <div class="container-central">
+  <!-- {{ storeData }} -->
+  <div class="container-central">
 
-      <!-- buttons::start -->
-      <div class="button-right" @click="moveCarrousel(1)"></div>
-      <div class="button-left" @click="moveCarrousel(-1)"></div>
-      <!-- buttons::end -->
+    <!-- buttons::start -->
+    <div class="button-right" @click="moveCarrousel(1)"></div>
+    <div class="button-left" @click="moveCarrousel(-1)"></div>
+    <!-- buttons::end -->
 
-      <!-- carrousel::start -->
-      <div :class="['carrousel']" :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
-        <div class="img-carrousel" v-for="image in images" :key="image.title">
-          <span class="title">
-            {{ image.title.toUpperCase() }}
-          </span>
-          <div class="description">
-            {{ image.short_description }}
-          </div>
-          <div class="container-img">
-            <img :src="image.address" :alt="image.title">
-          </div>
+    <!-- carrousel::start -->
+    <div :class="['carrousel']" :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
+      <div class="img-carrousel" v-for="item of data" :key="item._id">
+        <span class="title">
+          <!-- <RouterLink :to="['detalle/']+view+['/']+item.id" target="_blank"> -->
+          <RouterLink :to="['details/']+view+['/']+item._id">
+            {{ item.titulo.toUpperCase() }}
+          </RouterLink>
+        </span>
+        <div class="description">
+          {{ item.descripcion_breve }}
+        </div>
+        <div class="container-img">
+          <img :src="item.imagenes[0]" :alt="item.titulo">
         </div>
       </div>
-      <!-- carrousel::end -->
-
-      <!-- points::start -->
-      <ul class="puntos">
-        <li v-for="item in items" 
-        :key="item" 
-        @click="transformCarrousel(item)" 
-        :style="{ transform: `translateX(${positionCarrousel}%)`}"
-        :class="['punto', { activo: item === buttonActive }]"></li>
-      </ul>
-      <!-- points::end -->
     </div>
+    <!-- carrousel::end -->
+
+    <!-- points::start -->
+    <ul class="puntos">
+      <li v-for="item in items" 
+      :key="item" 
+      @click="transformCarrousel(item)" 
+      :style="{ transform: `translateX(${positionCarrousel}%)`}"
+      :class="['punto', { activo: item === buttonActive }]"></li>
+    </ul>
+    <!-- points::end -->
+  </div>
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useDataStore } from '../stores/data'
+import { useViewsStore } from '../stores/views';
+// cargando datos de pinia
+const storeData = useDataStore()
+const view = useViewsStore().view.name
+// cargando items para carrusel
+let data = storeData.data[view]
+// si no hay item en data
+if(Object.values(data).length == 0){
+  data = storeData.data.loading
+}
+console.log(Object.values(data))
 
-
-let id = 0
-const images = ref([
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/01-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/04-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/02-photo.jpg", short_description: "breve descripcion de la imagen."},
-  { title: "Titulo " + ++id, address: "/src/assets/IMG/05-photo.jpg", short_description: "breve descripcion de la imagen."}
-])
-const items = ref(images.value.length)
+const items = ref(Object.values(data).length)
 
 const buttonActive = ref(1)
-const positionCarrousel = ref(0)  //  posision actual del carrusel
+const positionCarrousel = ref(0)  //  posision inicial del carrusel
 const sizeItems = ref(100/items.value)
 const sizeCarrousel = ref(100 * items.value)
 
 function transformCarrousel(item) {
   buttonActive.value = item
-  // console.log(positionCarrousel.value)
   positionCarrousel.value = -sizeItems.value * (item - 1)
 }
 function moveCarrousel(button) {
-  // button==1 ? console.log("move right"):console.log("move left")
   buttonActive.value += button
   if(buttonActive.value <= 0) {buttonActive.value = items.value}
   if(buttonActive.value > items.value) {buttonActive.value = 1}
   transformCarrousel(buttonActive.value)
-  // console.log(buttonActive.value)
 }
 
 </script>
@@ -114,6 +117,10 @@ function moveCarrousel(button) {
   position: absolute;
   width: 100%;
   height: auto;
+}
+div.carrousel{
+  background-color: rgba(245, 245, 245, 0.534);
+  border-radius: 1em;
 }
 /* componentes carrusel (titulo, descripcion) */
 .img-carrousel .title {
