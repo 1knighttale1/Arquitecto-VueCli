@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "dist/*.js", // Ruta al directorio de la carpeta de compilación del proyecto (ajústalo según tu configuración)
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*).(js|css|png|jpe?g|gif|svg)", // Expresión regular para capturar todos los archivos estáticos
+        "dest": "/dist/$1.$2" // Ruta donde se encuentran los archivos estáticos en tu proyecto (ajústalo según tu configuración)
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html" // Ruta del punto de entrada de tu aplicación Vue (ajústalo según tu configuración)
+      }
+    ]
+  }
