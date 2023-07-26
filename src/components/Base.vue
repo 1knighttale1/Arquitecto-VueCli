@@ -4,7 +4,6 @@ import Footer from './Footer.vue'
 import Carrousel from './CarrouselItem.vue'
 import Contact from './ContactItem.vue'
 import AboutUs from './AboutUsItem.vue'
-import Detail from './DetailItem.vue'
 
 import { ref } from 'vue'
 import { useViewsStore } from '../stores/views'
@@ -12,7 +11,7 @@ import { useViewsStore } from '../stores/views'
 const store = useViewsStore()
 const view = store.view.name
 </script>
-
+ 
 <template>
     <Header />
     <!-- {{ store.view.isGalery }} -->
