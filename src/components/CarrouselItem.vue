@@ -21,7 +21,7 @@ dar preferencia a imagenes cuadradas -->
         <div class="description">
           {{ item.descripcion_breve }}
         </div>
-        <div class="container-img">
+        <div class="container-img" :style="{backgroundColor:imgBG}">
           <img :src="item.imagenes[0]" :alt="item.titulo">
         </div>
       </div>
@@ -48,13 +48,15 @@ const storeData = useDataStore()
 const view = useViewsStore().view.name
 // cargando items para carrusel
 let data = storeData.data[view]
+const items = ref(1)
+
 // si no hay item en data
+const imgBG = ref('rgba(255, 255, 255, 0.658)')
 if(Object.values(data).length == 0){
   data = storeData.data.loading
+}else{
+  items.value = Object.values(data).length
 }
-console.log(Object.values(data))
-
-const items = ref(Object.values(data).length)
 
 const buttonActive = ref(1)
 const positionCarrousel = ref(0)  //  posision inicial del carrusel
@@ -107,19 +109,27 @@ function moveCarrousel(button) {
 .img-carrousel {
   overflow: hidden;
 }
-.img-carrousel .container-img {
+.carrousel .img-carrousel {
+  /* width: calc( 100% / 2 - 2em); */
   width: 100%;
+  padding-inline: .05em;
+  min-height: 10vh;
+  transition: all 0.4s ease;
+  border-radius: 1em;
+}
+.img-carrousel .container-img {
+  /* width: 100%; */
   height: 80vw;
   max-height: 40em;
-  margin-inline: .1em;
+  margin-inline: 0em;
 }
 .img-carrousel img {
   position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 div.carrousel{
-  background-color: rgba(245, 245, 245, 0.534);
+  width: 100vw;
   border-radius: 1em;
 }
 /* componentes carrusel (titulo, descripcion) */
@@ -171,13 +181,6 @@ div.carrousel{
   transition: all 0.4s ease;
   transition: all 0.3s ease;
   transform: translateX(-25%);
-}
-
-.carrousel .img-carrousel {
-  width: calc( 100% / 2 - 2em);
-  min-height: 10vh;
-  transition: all 0.4s ease;
-  border-radius: 1em;
 }
 
 /* puntos de carrousel */
