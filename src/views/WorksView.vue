@@ -1,20 +1,43 @@
 <template>
     <Base>
         <template #title>
-            <h3 class="sub-title">{{ store.view.name.toUpperCase() }}</h3>
+            <h3 class="sub-title">{{ "obras".toUpperCase() }}</h3>
+        </template>
+        <template #body v-if="loading">
+            <Carrousel></Carrousel>
+        </template>
+        <template #body v-else>
+            <Carrousel v-if="datos"></Carrousel>
+            <div v-else>
+                Falla de carga
+            </div>
         </template>
     </Base>
 </template>
 
 <script setup>
 import Base from '../components/Base.vue'
+import Carrousel from '../components/CarrouselItem.vue'
 import { useViewsStore } from "../stores/views";
-import { ref } from 'vue'
+import { useDataStore } from "../stores/data";
+import { onMounted, ref } from 'vue'
 
+const storeViews = useViewsStore()
+const storeData = useDataStore()
+// control de vistas
 const view = ref({
-    name: 'Obras',
-    galery: true
+    name: 'works',
 })
-const store = useViewsStore()
-store.chanceView(view.value.name, view.value.galery)
+storeViews.chanceView(view.value.name)
+// control de datos obras
+const loading = ref(true)
+const datos = ref('')
+onMounted(async () => {
+  try {
+    await storeData.updateWorks()
+    datos.value = storeData.data[view.value.name]
+  } finally {
+    loading.value = false;
+  }
+});
 </script>

@@ -4,29 +4,35 @@ import ProjectsView from '../views/ProjectsView.vue'
 import WorksView from '../views/WorksView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
+import DetailView from '../views/DetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'projects',
       component: ProjectsView
     },
     {
-      path: '/obras',
-      name: 'obras',
+      path: '/works',
+      name: 'works',
       component: WorksView
     },
     {
-      path: '/nosotros',
-      name: 'nosotros',
+      path: '/aboutus',
+      name: 'aboutus',
       component: AboutUsView
     },
     {
-      path: '/contactos',
-      name: 'contactos',
+      path: '/contacts',
+      name: 'contacts',
       component: ContactUsView
+    },
+    {
+      path: '/details/:view/:id',
+      name: 'details',
+      component: DetailView
     },
     // {
     //   path: '/about',
