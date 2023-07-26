@@ -5,7 +5,6 @@ import Carrousel from './CarrouselItem.vue'
 import Contact from './ContactItem.vue'
 import AboutUs from './AboutUsItem.vue'
 
-import { ref } from 'vue'
 import { useViewsStore } from '../stores/views'
 
 const store = useViewsStore()
