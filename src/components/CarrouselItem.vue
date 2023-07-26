@@ -23,6 +23,7 @@ dar preferencia a imagenes cuadradas -->
         </div>
         <div class="container-img" :style="{backgroundColor:imgBG}">
           <img :src="item.imagenes[0]" :alt="item.titulo">
+
         </div>
       </div>
     </div>
@@ -57,6 +58,7 @@ if(Object.values(data).length == 0){
 }else{
   items.value = Object.values(data).length
 }
+
 
 const buttonActive = ref(1)
 const positionCarrousel = ref(0)  //  posision inicial del carrusel
@@ -182,7 +184,6 @@ div.carrousel{
   transition: all 0.3s ease;
   transform: translateX(-25%);
 }
-
 /* puntos de carrousel */
 .container-central .puntos {
   width: 100%;
