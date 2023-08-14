@@ -26,10 +26,9 @@ img{
 }
 div.img-container{
     margin: 1em auto;
-    width: 23em;
-    height: 10vw;
-    min-width: 20em;
-    min-height: 20em;
+    width: 100%;
+    /* width: 23em;
+    height: 10vw; */
     border-radius: 1em;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.658);

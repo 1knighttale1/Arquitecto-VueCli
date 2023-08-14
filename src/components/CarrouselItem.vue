@@ -22,8 +22,13 @@ dar preferencia a imagenes cuadradas -->
           {{ item.descripcion_breve }}
         </div>
         <div class="container-img" :style="{backgroundColor:imgBG}">
-          <img :src="item.imagenes[0]" :alt="item.titulo">
-
+          <img 
+          :src="item.imagenes[0]" 
+          :alt="item.titulo" 
+          :ref="el => {
+            imagenElementos[item._id] = el;
+          }" 
+          @load="applyStyles(item._id)">
         </div>
       </div>
     </div>
@@ -41,7 +46,7 @@ dar preferencia a imagenes cuadradas -->
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useDataStore } from '../stores/data'
 import { useViewsStore } from '../stores/views';
 // cargando datos de pinia
@@ -53,6 +58,7 @@ const items = ref(1)
 
 // si no hay item en data
 const imgBG = ref('rgba(255, 255, 255, 0.658)')
+
 if(Object.values(data).length == 0){
   data = storeData.data.loading
 }else{
@@ -69,6 +75,7 @@ function transformCarrousel(item) {
   buttonActive.value = item
   positionCarrousel.value = -sizeItems.value * (item - 1)
 }
+
 function moveCarrousel(button) {
   buttonActive.value += button
   if(buttonActive.value <= 0) {buttonActive.value = items.value}
@@ -76,6 +83,26 @@ function moveCarrousel(button) {
   transformCarrousel(buttonActive.value)
 }
 
+// aplciar estilos correspondientes
+const imagenElementos = Array(items.value);
+
+const applyStyles = (item) => {
+  const img = imagenElementos[item]
+  if (img.width > img.height) {
+    img.style.height = '101%'
+    if (img.width/1.5 > img.height) {
+      img.style.animation = 'slideX 10s linear infinite alternate'
+    }
+  }else{
+    img.style.width = '101%'
+    if (img.height/1.4 > img.width) {
+      img.style.animation = 'slideY 10s linear infinite alternate'
+    }
+  }
+  img.style.left = '.05em'
+  img.style.bottom = '0'
+
+};
 </script>
 <style>
 /* botones */
@@ -127,8 +154,6 @@ function moveCarrousel(button) {
 }
 .img-carrousel img {
   position: absolute;
-  width: 100%;
-  height: 100%;
 }
 div.carrousel{
   width: 100vw;
@@ -206,5 +231,22 @@ div.carrousel{
 }
 .container-central .punto.activo {
   background-color: lightblue;
+}
+/* animaciones de imagenes del carrusel */
+@keyframes slideY {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(30%);
+  }
+}
+@keyframes slideX {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
 }
 </style>

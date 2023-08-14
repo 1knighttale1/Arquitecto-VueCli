@@ -34,9 +34,6 @@ const datos = ref(false)
 const data = ref(storeData.data[view])
 
 // comprueba si hay datos en el storeData para esta vista, solicita al servidor si no
-console.log(Object.keys(data.value).length)
-console.log(Object.values(data.value))
-
 onMounted(async () => {
     try {
         if (Object.keys(data.value).length == 0){
@@ -49,7 +46,6 @@ onMounted(async () => {
         }
         // buscando objeto en lista 
         data.value = storeData.data[view].find(objeto => objeto._id === idObject)
-        console.log(data.value)
         datos.value = true
     } finally {
         loading.value = false;
