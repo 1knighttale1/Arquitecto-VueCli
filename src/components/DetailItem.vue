@@ -42,11 +42,12 @@ onMounted(async () => {
                 "works": storeData.updateWorks,
             }
             await update[view]()
-            
         }
         // buscando objeto en lista 
         data.value = storeData.data[view].find(objeto => objeto._id === idObject)
-        datos.value = true
+        if(data.value){
+            datos.value = true
+        }
     } finally {
         loading.value = false;
     }

@@ -5,13 +5,17 @@ import { RouterLink } from 'vue-router'
 <template>
     <footer id="footer">
         <div class="social-icons-container">
+            <router-link to="/" class="social-icon"></router-link>
+            <router-link to="/" class="social-icon"></router-link>
+            <router-link to="/" class="social-icon"></router-link>
+            <router-link to="/" class="social-icon"></router-link>
+            <!-- <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
-            <a href="" class="social-icon"></a>
-            <a href="" class="social-icon"></a>
+            <a href="" class="social-icon"></a> -->
         </div>
         <span class="copyright">
-            &copy;2023, POIESIS. All rights reserved.
+            &copy;2023, POIESIS. Todos los derechos reservados.
         </span>
     </footer>
 </template>
