@@ -91,15 +91,15 @@ const applyStyles = (item) => {
   if (img.width > img.height) {
     img.style.height = '101%'
     if (img.width/1.5 > img.height) {
-      img.style.animation = 'slideX 10s linear infinite alternate'
+      img.style.animation = 'slideX 5s linear infinite alternate'
     }
   }else{
     img.style.width = '101%'
     if (img.height/1.4 > img.width) {
-      img.style.animation = 'slideY 10s linear infinite alternate'
+      img.style.animation = 'slideY 5s linear infinite alternate'
     }
   }
-  img.style.left = '.05em'
+  img.style.left = '-.05em'
   img.style.bottom = '0'
 
 };
@@ -234,19 +234,19 @@ div.carrousel{
 }
 /* animaciones de imagenes del carrusel */
 @keyframes slideY {
-  from {
-    transform: translateY(0);
+  0%{
+    bottom: 0%;
   }
-  to {
-    transform: translateY(30%);
+  100% {
+    bottom: -50%;
   }
 }
 @keyframes slideX {
   0% {
-    transform: translateX(0%);
+    left: 0%;
   }
   100% {
-    transform: translateX(-30%);
+    left: -50%;
   }
 }
 </style>
