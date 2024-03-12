@@ -5,6 +5,7 @@ import WorksView from '../views/WorksView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
 import DetailView from '../views/DetailView.vue'
+import HomeView from '../views/HomeView.vue'
 import NotFound from '../views/NotFoundView.vue'
 
 const router = createRouter({
@@ -12,6 +13,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: HomeView
+    },
+    {
+      path: '/projects',
       name: 'projects',
       component: ProjectsView
     },

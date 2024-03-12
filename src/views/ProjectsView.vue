@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import Base from '../components/Base.vue'
-import Carrousel from '../components/CarrouselItem.vue'
+import Base from '../components/Base_test.vue'
+import Carrousel from '../components/CarrouselItem_test.vue'
 import { useViewsStore } from "../stores/views";
 import { useDataStore } from "../stores/data";
 import { onMounted, ref } from 'vue'
