@@ -1,5 +1,5 @@
 <template>
-    <Base>
+    <Base :title="title">
         <template #title>
             <h3 class="sub-title">{{ "proyectos".toUpperCase() }}</h3>
         </template>
@@ -16,14 +16,15 @@
 </template>
 
 <script setup>
-import Base from '../components/Base_test.vue'
-import Carrousel from '../components/CarrouselItem_test.vue'
+import Base from '../components/Base.vue'
+import Carrousel from '../components/CarrouselItem.vue'
 import { useViewsStore } from "../stores/views";
 import { useDataStore } from "../stores/data";
 import { onMounted, ref } from 'vue'
 
 const storeViews = useViewsStore()
 const storeData = useDataStore()
+const title = ref('proyectos');
 // control de vistas
 const view = ref({
     name: 'projects',

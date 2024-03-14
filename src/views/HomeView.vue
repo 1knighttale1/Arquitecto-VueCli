@@ -1,7 +1,9 @@
 <template>
-  <MainItem/>
-  <LogoItem :type="typeLogo"/>
   <Base>
+    <template #header>
+      <MainItem/>
+      <LogoItem :type="typeLogo"/>
+    </template>
     <template #body>
       <div class="intro-estudio general disabled">
         {{ intro }}

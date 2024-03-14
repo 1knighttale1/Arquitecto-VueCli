@@ -41,17 +41,22 @@
   }
 }
 
-.footer-logo{
+.footer-logo, .header-logo{
   position: absolute;
   z-index: 9000;
   width: 13rem;
   min-height: 7em;
-  background-image: var(--footer-logo-1);
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
 }
-.footer-logo:hover{
-  background-image: var(--footer-logo-2);
+.header-logo{
+  background-image: var(--icon-logo-3);
+}
+.footer-logo{
+  background-image: var(--icon-logo-1);
+}
+.footer-logo:hover, .header-logo:hover{
+  background-image: var(--icon-logo-2);
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
     <div class="container-gallery">
-        <RouterLink :to="view" class="title">
-            <slot name="title"></slot>
-            <!-- <h2 class="title">
-            </h2> -->
+        <RouterLink :to="view">
+            <span class="card-title">
+                <slot name="title">TITULO</slot>
+            </span>
         </RouterLink>
         <div class="container-cards">
             <RouterLink to="/works" class="card pointer">
@@ -39,17 +39,16 @@ const props = defineProps([
 <style scoped>
 /* container-cards*/
 /* title*/
-a.title{
+span.card-title{
     font-size: 8em;
     font-weight: bold;
-    text-transform: uppercase;
 }
-a.title:hover{
+span.card-title:hover{
     color: var(--vt-c-orange);
     text-shadow: 2px 2px 5px var(--vt-c-carbon);
 }
 @media (max-width: 65em){
-  a.title{
+  span.card-title{
     font-size: 13vw;
     /* font-size: 2.5em; */
   }

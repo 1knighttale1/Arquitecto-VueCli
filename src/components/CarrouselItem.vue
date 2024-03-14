@@ -12,7 +12,7 @@ dar preferencia a imagenes cuadradas -->
     <!-- carrousel::start -->
     <div :class="['carrousel']" :style="{ transform: `translateX(${positionCarrousel}%)`, width: `${sizeCarrousel}%` }">
       <div class="img-carrousel" v-for="item of data" :key="item._id">
-        <span class="title">
+        <span class="carrousel-title">
           <!-- <RouterLink :to="['detalle/']+view+['/']+item.id" target="_blank"> -->
           <RouterLink :to="['details/']+view+['/']+item._id">
             {{ item.titulo.toUpperCase() }}
@@ -160,7 +160,7 @@ div.carrousel{
   border-radius: 1em;
 }
 /* componentes carrusel (titulo, descripcion) */
-.img-carrousel .title {
+.img-carrousel .carrousel-title {
   font-weight: bold;
   position: absolute;
   display: block;
@@ -173,7 +173,7 @@ div.carrousel{
   z-index: 1000;
 }
 @media (max-width: 35em){
-  .img-carrousel .title {
+  .img-carrousel .carrousel-title {
     font-weight: normal;
     padding: .3rem;
   }

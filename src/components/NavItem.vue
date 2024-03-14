@@ -11,12 +11,14 @@
   <nav>
     <ul id="primary-navigation" :data-visible="menuHeader" class="primary-navigation flex">
       <li v-for="menu in menus" :key="menu.id" class="flex menu">
+        <span>
           <RouterLink 
           :to="menu.url" 
           class="menu flex" 
           :data-active="isActive(menu.active)">
           {{ menu.text }}
           </RouterLink>
+        </span>
       </li>
       <div class="footer-menu">
         <div class="logo-container flex">
@@ -46,7 +48,7 @@ const menuHeader = ref(false)
 
 let id = 0
 const menus = ref([
-  { id: id++, text: 'PROYECTOS', url: '/', active:  'projects'},
+  { id: id++, text: 'PROYECTOS', url: '/projects', active:  'projects'},
   { id: id++, text: 'OBRAS', url:'/works', active: 'works' },
   { id: id++, text: 'NOSOTROS', url:'/aboutus', active: 'aboutus' },
   { id: id++, text: 'CONTACTOS', url:'/contacts', active: 'contacts' },

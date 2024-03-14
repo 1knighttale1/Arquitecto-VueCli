@@ -30,9 +30,9 @@
   --menu-black: url("@/assets/SVG/menu_icon.svg");
   --lg-home-white: url("@/assets/SVG/LOGO/Imagotipo _ Tag 1.svg");
   --lg-home-orange: url("@/assets/SVG/LOGO/Imagotipo _ Tag 4.svg");
-  --lg-footer-white: url("@/assets/SVG/LOGO/Isotipo 1.svg");
-  --lg-footer-black: url("@/assets/SVG/LOGO/Isotipo 2.svg");
-  --lg-footer-orange: url("@/assets/SVG/LOGO/Isotipo 3.svg");
+  --lg-isotipo-white: url("@/assets/SVG/LOGO/Isotipo 1.svg");
+  --lg-isotipo-black: url("@/assets/SVG/LOGO/Isotipo 2.svg");
+  --lg-isotipo-orange: url("@/assets/SVG/LOGO/Isotipo 3.svg");
 }
 
 /* semantic color variables for this project */
@@ -50,8 +50,9 @@
   --menu-icon: var(--menu-white);
   --home-logo-1: var(--lg-home-white);
   --home-logo-2: var(--lg-home-orange);
-  --footer-logo-1: var(--lg-footer-white);
-  --footer-logo-2: var(--lg-footer-orange);
+  --icon-logo-1: var(--lg-isotipo-white);
+  --icon-logo-2: var(--lg-isotipo-orange);
+  --icon-logo-3: var(--lg-isotipo-black);
 }
 
 /* @media (prefers-color-scheme: light) {
@@ -124,14 +125,3 @@ html, body {
     padding: 0;
   }
 } 
-
-.pointer{
-  cursor: pointer;
-}
-.disabled{
-  user-select: none;
-  pointer-events: none;
-}
-* {
-  /* border: 2px solid red; */
-}

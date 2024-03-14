@@ -1,5 +1,5 @@
 <template>
-    <Base>
+    <Base :title="title">
         <template #title>
             <h3 class="sub-title">{{ "contactos".toUpperCase() }}</h3>
         </template>
@@ -18,6 +18,7 @@ const view = ref({
 })
 const storeViews = useViewsStore()
 const storeData = useDataStore()
+const title = ref('contactos');
 
 storeViews.chanceView(view.value.name, view.value.galery)
 storeData.updateContacts()

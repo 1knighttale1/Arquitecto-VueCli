@@ -7,7 +7,7 @@
     <div v-else class="footer-content flex">
       <div class="detail-container ">
         <div class="title-container">
-          <span class="title">
+          <span class="footer-title">
             Direcciones
           </span>
         </div>
@@ -17,7 +17,7 @@
       </div>
       <div class="detail-container">
         <div class="title-container">
-          <span class="title">
+          <span class="footer-title">
             Contactos
           </span>
         </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="detail-container">
         <div class="title-container">
-          <span class="title">
+          <span class="footer-title">
             Siguenos
           </span>
         </div>
@@ -79,7 +79,7 @@ footer.footer-container{
   width: 100%;
   min-height: 70vh;
   bottom: 0;
-  padding: 7rem 5%;
+  padding: 7rem 5% 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,6 +102,7 @@ footer.footer-container{
 .detail-container{
   width: 100%;
   text-align: center;
+  --select: auto;
 }
 .title-container{
   height: 4rem;
@@ -111,7 +112,7 @@ footer.footer-container{
     height: 2.5rem;
   }
 }
-span.title{
+span.footer-title{
   color: var(--color-text-2);
 }
 span.span{

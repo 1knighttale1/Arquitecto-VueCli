@@ -1,5 +1,5 @@
 <template>
-    <Base>
+    <Base :title="title">
         <template #title>
             <h3 class="sub-title">{{ "obras".toUpperCase() }}</h3>
         </template>
@@ -24,6 +24,7 @@ import { onMounted, ref } from 'vue'
 
 const storeViews = useViewsStore()
 const storeData = useDataStore()
+const title = ref('trabajos');
 // control de vistas
 const view = ref({
     name: 'works',
